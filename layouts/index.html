@@ -1,0 +1,28 @@
+{{ partial "head.html" . }}
+  {{ partial "header.html" . }}
+  <main class="container-fluid">
+    <div class="row">
+      <section class="col-lg-2 text-center p-3 text-light">
+        <div class="sticky-top">
+          <img src="{{ .Site.BaseURL }}img/avatar.png" class="img-fluid img-thumbnail rounded-circle" alt="avatar">
+          <h3 class="my-3">Thịnh Nguyễn</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis tenetur quo labore ut non pariatur unde, voluptatum ducimus nobis sed.</p>
+          <div>
+            <a href="https://github.com/pythinh" class="text-light mr-1" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.facebook.com/npthinhdev" class="text-light" target="_blank"><i class="fab fa-facebook"></i></a>
+          </div>
+        </div>
+      </section>
+      <section class="col-lg-10 p-0">
+        <section class="content p-3 bg-light">
+          {{ partial "ads728x90.html" . }}
+          {{ range where .Pages "Section" "posts" }}
+            {{ .Render "summary" }}
+          {{ end }}
+        </section>
+        {{ partial "pagination.html" . }}
+      </section>
+    </div>
+  </main>
+  {{ partial "footer.html" . }}
+{{ partial "foot.html" . }}

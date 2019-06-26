@@ -1,0 +1,14 @@
+<article class="card my-3">
+  <div class="row no-gutters">
+    <div class="col-sm-4">
+      <a href="{{ .Permalink }}"><img src="{{ .Site.BaseURL }}img/noimage.png" class="img-fluid" alt="{{ .Title }}"></a>
+    </div>
+    <div class="col-sm-8">
+      <div class="card-body">
+        <a href="{{ .Permalink }}"><h2 class="card-title">{{ .Title }}</h2></a>
+        <p class="card-text text-info"><i class="far fa-clock"></i> {{ .Date.Format "2006/01/02" }}</p>
+        <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab excepturi illum recusandae odit atque voluptas cumque, accusantium aliquid quod quasi?</p>
+      </div>
+    </div>
+  </div>
+</article>

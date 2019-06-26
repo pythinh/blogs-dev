@@ -1,0 +1,29 @@
+{{ partial "head.html" . }}
+  {{ partial "header.html" . }}
+  <main class="m-0 bg-light">
+    <div class="container-fluid p-3">
+      <div class="row">
+        <article class="col-lg-9 col-md-12 mb-3">
+          <section class="text-center">
+            <h1 class="text-info">{{ .Title }}</h1>
+            <div class="mt-3">
+              <span>{{ .Date.Format "2006/01/02" }}</span>
+              {{ $baseUrl := .Site.BaseURL }}
+              {{ range .Params.categories }}
+                <a href="{{ $baseUrl }}categories/{{ . | urlize }}" target="_blank"><span class="badge badge-danger">{{ . }}</span></a>
+              {{ end }}
+            </div>
+          </section>
+          <hr>
+          {{ partial "ads728x90.html" . }}
+          <section class="text-justify">{{ .Content }}</section>
+        </article>
+        <aside class="col-lg-3 col-md-12 text-center">
+          {{ partial "ads300x250.html" . }}
+          {{ partial "ads300x600.html" . }}
+        </aside>
+      </div>
+    </div>
+  </main>
+  {{ partial "footer.html" . }}
+{{ partial "foot.html" . }}

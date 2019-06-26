@@ -1,0 +1,7 @@
+baseURL = "https://thinhnguyen.name.vn/"
+languageCode = "vi-vn"
+title = "My Blogs | Thịnh Nguyễn"
+enableRobotsTXT = true
+
+[params]
+    description = "Chia sẻ kiến thức lập trình"

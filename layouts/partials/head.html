@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="vn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{ if .IsHome }}{{ .Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
+  <meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Description }}{{ end }}">
+  <link rel="stylesheet" href="{{ .Site.BaseURL }}css/all.min.css">
+  <link rel="stylesheet" href="{{ .Site.BaseURL }}css/bootstrap.min.css">
+  {{ if not .Site.IsServer }}
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-88343275-5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-88343275-5');
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-4172184010381626",
+      enable_page_level_ads: true
+    });
+  </script>
+  {{ end }}
+</head>
+<body class="bg-dark">
