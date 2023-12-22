@@ -46,58 +46,58 @@ class DateTimeDiff {
             return;
         }
 
-        // handle second
-        delta = this.#end.getSeconds() - this.#start.getSeconds();
-        if (delta >= 0) {
-            this.second += delta;
-        } else {
-            this.second += 60 + delta;
-            this.minute -= 1;
-        }
+        // handle year
+        this.year = this.#end.getFullYear() - this.#start.getFullYear();
 
-        // handle minute
-        delta = this.#end.getMinutes() - this.#start.getMinutes();
-        if (delta >= 0 && this.minute == 0) {
-            this.minute = delta;
+        // handle month
+        let deltaMonth = this.#end.getMonth() - this.#start.getMonth();
+        if (deltaMonth > 0) {
+            this.month = deltaMonth;
         } else {
-            this.minute += 60 + delta;
-            this.hour -= 1;
-        }
-
-        // handle hour
-        delta = this.#end.getHours() - this.#start.getHours();
-        if (delta >= 0 && this.hour == 0) {
-            this.hour = delta;
-        } else {
-            this.hour += 24 + delta;
-            this.day -= 1;
+            this.month = 12 + deltaMonth;
+            this.year -= 1;
         }
 
         // handle day
-        delta = this.#end.getDate() - this.#start.getDate();
-        if (delta >= 0 && this.day == 0) {
-            this.day = delta;
+        let deltaDay = this.#end.getDate() - this.#start.getDate();
+        if (deltaDay > 0) {
+            this.day = deltaDay;
         } else {
             // if the month is Jan, will get Dec of the previous year
             if (this.#start.getMonth() === 0) {
-                this.day += this.#totalDayInMonth(this.#start.getFullYear() - 1, 11) + delta;
+                this.day = this.#totalDayInMonth(this.#start.getFullYear() - 1, 11) + deltaDay;
             } else {
-                this.day += this.#totalDayInMonth(this.#start.getFullYear(), this.#start.getMonth() - 1) + delta;
+                this.day = this.#totalDayInMonth(this.#start.getFullYear(), this.#start.getMonth() - 1) + deltaDay;
             }
             this.month -= 1;
         }
 
-        // handle month
-        delta = this.#end.getMonth() - this.#start.getMonth();
-        if (delta >= 0 && this.month == 0) {
-            this.month = delta;
+        // handle hour
+        let deltaHour = this.#end.getHours() - this.#start.getHours();
+        if (deltaHour > 0) {
+            this.hour = deltaHour;
         } else {
-            this.month += 12 + delta;
-            this.year -= 1;
+            this.hour = 24 + deltaHour;
+            this.day -= 1;
         }
 
-        // handle year
-        this.year += this.#end.getFullYear() - this.#start.getFullYear();
+        // handle minute
+        let deltaMinute = this.#end.getMinutes() - this.#start.getMinutes();
+        if (deltaMinute > 0) {
+            this.minute = deltaMinute;
+        } else {
+            this.minute = 60 + deltaMinute;
+            this.hour -= 1;
+        }
+
+        // handle second
+        let deltaSecond = this.#end.getSeconds() - this.#start.getSeconds();
+        if (deltaSecond >= 0) {
+            this.second = deltaSecond;
+        } else {
+            this.second = 60 + deltaSecond;
+            this.minute -= 1;
+        }
 
         this.#formatTime();
     }
